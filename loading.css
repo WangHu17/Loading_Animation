@@ -1,0 +1,140 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+	background-color: #DB4D6D;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+h2{
+	color: white;
+    font-size: 40px;
+    margin-right: 50px;
+}
+h3{
+	margin-top: 0;
+    opacity: 0.5;
+    color: white;
+}
+.monster{
+	width: 110px;
+	height: 100px;
+	background-color: #e55A54;
+	border-radius: 20px;
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	box-shadow: 0px 10px 20px rgb(0,0,0,0.2);
+	animation: jumping 0.8s infinite alternate;
+}
+.blue{
+	background-color: #0C4475;
+	animation-delay: 0.5s; 
+}
+.monster.blue .eyeball,
+.monster.blue .mouth{
+	background-color: #e55A54;
+	animation-delay: 0.5s;
+}
+.eye{
+	width: 40%;
+	height: 40%;
+	border-radius: 50%;
+	background-color: #FFF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.eyeball{
+	width: 50%;
+	height: 50%;
+	border-radius: 50%;
+	background-color: #0C4475;
+	animation: eyemove 2s infinite alternate; 
+}
+.mouth{
+	width: 30%;
+	height: 10px;
+	border-radius: 7px;
+	background-color: #FFF;
+	margin-top: 15%;
+}
+.monster::before,
+.monster::after{
+	content: "";
+	display: block;
+	width: 20%;
+	height: 10px;
+	background-color: #FFF;
+	border-radius: 10px;
+	position: absolute;
+	left: 50%;
+	top: -10px;
+}
+.monster::before{
+	transform: translateX(-70%) rotate(45deg);
+}
+.monster::after{
+	transform: translateX(-30%) rotate(-45deg);
+}
+@keyframes jumping{
+	50%{
+		top: 0;
+		box-shadow: 0px 10px 20px rgb(0,0,0,0.2);
+	}
+	100%{
+		top: -50px;
+		box-shadow: 0px 130px 50px rgb(0,0,0,0.1);
+	}
+}
+@keyframes eyemove{
+	0%,
+	20%{
+		transform: translate(50%);
+	}
+	90%,
+	100%{
+		transform: translate(-50%);
+	}
+}
+.pageloading{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #0C4475;
+	transition: opacity 0.5s 0.5s;
+}
+.pageloading.complete{
+	opacity: 0;
+}
+.pageloading.complete .monster{
+	transition: 0.5s;
+	transform: scale(0) rotate(360deg);
+}
+.loadingline{
+	width: 200px;
+	height: 8px;
+	border-radius: 5px;
+	margin-top: 50px;
+	background-color: #FFF;
+	overflow: hidden;
+	transition: 0.5s;
+}
+.line{
+	width: 0%;
+	height: 100%;
+	background-color: #E55A54;
+}
